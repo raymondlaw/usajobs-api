@@ -112,16 +112,16 @@ function parse_jobs_results(data, status_code, request_data, res) {
 
 // --- Format Job ---
 function format_job (job) {
-	const job_descriptor = job?.MatchedObjectDescriptor;
-	const title = job_descriptor?.PositionTitle;
-	const url = job_descriptor?.PositionURI;
-	const description = job_descriptor?.QualificationSummary;
-	return `
-		<li>
-			<a href="${url}">${title}</a>
-			<p>${description}</p>
-		</li>
-	`;
+    const job_descriptor = job?.MatchedObjectDescriptor;
+    const title = job_descriptor?.PositionTitle;
+    const url = job_descriptor?.PositionURI;
+    const description = job_descriptor?.QualificationSummary;
+    return `
+        <li>
+            <a href="${url}">${title}</a>
+            <p>${description}</p>
+        </li>
+    `;
 }
 
 // --- Serve Results ---
@@ -129,7 +129,7 @@ function serve_results(keyword, location_name, jobs, response_code, res) {
     let results_html = "<h1>USA Jobs Demo</h1>";
     switch (response_code) {
     case 200:
-		const results = jobs.map(format_job).join("");
+        const results = jobs.map(format_job).join("");
         results_html += `<h2>Search Results: ${keyword || "All Jobs"} in ${location_name || "Everywhere"}</h2>${results}`;
         break;
     case 401:
